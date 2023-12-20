@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import nltk
+nltk.download('stopwords')
 import pickle
 import base64
 from nltk.corpus import stopwords
@@ -17,9 +18,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from wordcloud import WordCloud  # Import WordCloud here
-
-# Download NLTK stopwords dataset
-nltk.download('stopwords')
 
 # Define df_reviews and df_preprocessed as global variables
 df_reviews = pd.DataFrame()
