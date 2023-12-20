@@ -18,6 +18,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from wordcloud import WordCloud  # Import WordCloud here
 
+# Download NLTK stopwords dataset
+nltk.download('stopwords')
+
 # Define df_reviews and df_preprocessed as global variables
 df_reviews = pd.DataFrame()
 df_preprocessed = pd.DataFrame()
@@ -103,48 +106,6 @@ def train_model(X_train, y_train, vectorizer_type='tfidf', classifier_type='naiv
     except Exception as e:
         st.error(f"Error training model: {e}")
         return None, None
-
-
-# # Function for model evaluation
-# def evaluate_model(model, X_test, y_test, vectorizer):
-#     try:
-#         st.text("Evaluating the model...")
-#         if X_test.empty or y_test.empty or vectorizer is None or model is None:
-#             st.warning("No data for model evaluation.")
-#             return None, None, None, None
-#         # Vectorization of test data
-#         X_test_tfidf = vectorizer.transform(X_test)
-
-#         # Predictions
-#         y_pred = model.predict(X_test_tfidf)
-
-#         # Metrics calculation
-#         accuracy = accuracy_score(y_test, y_pred)
-#         precision = precision_score(y_test, y_pred, average='binary', pos_label='Negatif', zero_division=1)
-#         recall = recall_score(y_test, y_pred, average='binary', pos_label='Negatif', zero_division=1)
-#         f1 = f1_score(y_test, y_pred, average='binary', pos_label='Negatif', zero_division=1)
-#         confusion_mat = confusion_matrix(y_test, y_pred)
-
-#         st.success("Model evaluation successful.")
-#         st.write(f"Accuracy: {accuracy:.2f}")
-#         st.write(f"Precision: {precision:.2f}")
-#         st.write(f"Recall: {recall:.2f}")
-#         st.write(f"F1 Score: {f1:.2f}")
-
-#         # Confusion Matrix
-#         st.subheader("Confusion Matrix")
-#         st.write(confusion_mat)
-
-#         # Classification Report
-#         st.subheader("Classification Report")
-#         from sklearn.metrics import classification_report
-#         class_report = classification_report(y_test, y_pred, target_names=['Positif', 'Negatif'])
-#         st.text(class_report)
-
-#         return accuracy, precision, recall, f1
-#     except Exception as e:
-#         st.error(f"Error evaluating model: {e}")
-#         return None, None, None, None
 
 # Function for model evaluation
 def evaluate_model(model, X_test, y_test, vectorizer):
