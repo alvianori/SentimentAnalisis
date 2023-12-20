@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import nltk
-nltk.download('stopwords')
 import pickle
 import base64
 from nltk.corpus import stopwords
@@ -22,6 +21,7 @@ from wordcloud import WordCloud  # Import WordCloud here
 # Define df_reviews and df_preprocessed as global variables
 df_reviews = pd.DataFrame()
 df_preprocessed = pd.DataFrame()
+nltk.data.path.append("/app/nltk_data")
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Function to scrape reviews
