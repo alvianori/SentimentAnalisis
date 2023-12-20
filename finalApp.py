@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import nltk
-nltk.download('stopwords')
+nltk.download(['stopwords', 'punkt'])
 import pickle
 import base64
 from nltk.corpus import stopwords
